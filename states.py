@@ -55,7 +55,6 @@ def process_event(event_name, teams, is_relay, age_group):
                         boys_relay_scores[team_code] = 0
                     boys_relay_scores[team_code] += point_system[i]
 
-
 # ---------------------------------------------------------------------------
 # PDF extraction: parse relay events from a HY-TEK psych sheet PDF
 # ---------------------------------------------------------------------------
