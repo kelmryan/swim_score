@@ -77,7 +77,11 @@ events_1112 = [
         "teams": ["NBAC-MD", "FSC-MD", "MAC-MD", "ASC-MD", "CAA-MD", "BAY-MD", "EST-MD", "GBSA-MD"],
         "is_relay": True
     },
-    # Add more events as needed...
+        {
+        "name": "Boys 11-12 200 Medley Relay (#14)",
+        "teams": ["NBAC-MD", "FSC-MD", "MAC-MD", "ASC-MD", "CAA-MD", "BAY-MD", "EST-MD", "GBSA-MD"],
+        "is_relay": True
+    },
 ]
 
 # 10 & UNDER AGE GROUP EVENTS
@@ -89,7 +93,12 @@ events_10u = [
                  "FSC-MD", "CAC-MD", "CAA-MD", "NAAC-MD"],
         "is_relay": True
     },
-    # Add more events as needed...
+    {
+        "name": "Boys 10&U 200 Medley Relay (#12)",
+        "teams": ["NBAC-MD", "ASC-MD", "EST-MD", "BAY-MD", "MAC-MD", "SPRC-MD", "LBA-MD", 
+                 "FSC-MD", "CAC-MD", "CAA-MD", "NAAC-MD"],
+        "is_relay": True
+    }
 ]
 
 # Process all events
