@@ -10,6 +10,10 @@ age_group_scores = {
     '13-14': {}
 }
 
+# Separate relay scores for girls and boys
+girls_relay_scores = {}
+boys_relay_scores = {}
+
 # Helper function to add points to a team
 def add_points(team, points, age_group=None):
     # Extract team code without the "MD" suffix
@@ -28,10 +32,22 @@ def add_points(team, points, age_group=None):
 # Function to process an event
 def process_event(event_name, teams, is_relay, age_group):
     point_system = relay_points if is_relay else individual_points
-    
+
     for i, team in enumerate(teams[:16]):  # Only process up to 16 teams
         if team:
             add_points(team, point_system[i], age_group)
+
+            # Track relay scores separately by gender
+            if is_relay:
+                team_code = team.split('-')[0]
+                if "Girls" in event_name:
+                    if team_code not in girls_relay_scores:
+                        girls_relay_scores[team_code] = 0
+                    girls_relay_scores[team_code] += point_system[i]
+                elif "Boys" in event_name:
+                    if team_code not in boys_relay_scores:
+                        boys_relay_scores[team_code] = 0
+                    boys_relay_scores[team_code] += point_system[i]
 
 # Define events - samples from each age group
 
@@ -101,6 +117,18 @@ for age_group in age_group_scores:
     sorted_age_group = sorted(age_group_scores[age_group].items(), key=lambda x: x[1], reverse=True)
     for i, (team, score) in enumerate(sorted_age_group, 1):
         print(f"{i}. {team}: {score} points")
+
+# Display girls relay standings
+print("\nGIRLS RELAY STANDINGS:")
+sorted_girls_relays = sorted(girls_relay_scores.items(), key=lambda x: x[1], reverse=True)
+for i, (team, score) in enumerate(sorted_girls_relays, 1):
+    print(f"{i}. {team}: {score} points")
+
+# Display boys relay standings
+print("\nBOYS RELAY STANDINGS:")
+sorted_boys_relays = sorted(boys_relay_scores.items(), key=lambda x: x[1], reverse=True)
+for i, (team, score) in enumerate(sorted_boys_relays, 1):
+    print(f"{i}. {team}: {score} points")
 
 # Generate a summary table for top 10 teams with columns for each age group
 print("\nTOP 10 TEAMS BREAKDOWN BY AGE GROUP:")
